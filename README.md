@@ -39,8 +39,7 @@ Sistema web para la gestión eficiente de turnos en servicios universitarios, de
 
 1. Clona el repositorio del backend:
 ```bash
-git clone https://github.com/tu-usuario/kairos-backend.git
-cd kairos-backend
+git clone https://github.com/Fra46/KairosWebAPI
 ```
 
 2. Restaura las dependencias:
@@ -65,14 +64,14 @@ dotnet restore
 
 
 ```shellscript
-dotnet ef database update
+Add-Migration nombre-migracion
 ```
 
 5. Ejecuta el backend:
 
 
 ```shellscript
-dotnet run
+Click en https
 ```
 
 El backend estará disponible en `https://localhost:7299`
@@ -83,14 +82,14 @@ El backend estará disponible en `https://localhost:7299`
 
 
 ```shellscript
-git clone https://github.com/tu-usuario/kairos-frontend.git
-cd kairos-frontend
+git clone https://github.com/Fra46/KairosWebAPI
 ```
 
 2. Instala las dependencias:
 
 
 ```shellscript
+npm install react-router-dom axios bootstrap
 npm install
 ```
 
@@ -179,20 +178,9 @@ kairos-frontend/
 - `DELETE /api/Usuarios/{id}` - Eliminar usuario
 
 
-## Contribuciones
-
-Las contribuciones son bienvenidas. Por favor:
-
-1. Haz fork del proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
-
 ## Licencia
 
-Este proyecto está bajo la Licencia MIT.
+Este proyecto está bajo la Licencia [MIT](https://opensource.org/licenses/MIT).
 
 ## Autor
 
