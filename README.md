@@ -1,12 +1,12 @@
 # Kairos - Sistema de Turnos
 
-Sistema web para la gestión eficiente de turnos en servicios universitarios, desarrollado con React 18 + Vite en el frontend y ASP.NET Core Web API en el backend.
+Sistema web para la gestión eficiente de turnos de diversos servicios, desarrollado con React 18 + Vite en el frontend y ASP.NET Core Web API en el backend.
 
 ## 🚀 Características
 
 - **Gestión de Turnos**: Solicitud, visualización y administración de turnos en tiempo real
-- **Gestión de Usuarios**: Registro y administración de estudiantes, docentes y administrativos
-- **Gestión de Servicios**: CRUD completo de servicios universitarios (comedor, biblioteca, etc.)
+- **Gestión de Usuarios**: Registro y administración de clientes
+- **Gestión de Servicios**: CRUD completo de servicios (universitario, atencion al cliente, etc.)
 - **Panel de Administración**: Control centralizado para avanzar turnos y monitorear el sistema
 - **Interfaz Moderna**: Diseño responsive con Bootstrap 5
 
@@ -144,8 +144,8 @@ kairos-frontend/
 
 ## Uso
 
-1. **Crear Usuarios**: Accede a la sección "Usuarios" para registrar estudiantes, docentes o administrativos
-2. **Crear Servicios**: En "Servicios" puedes agregar los servicios disponibles (comedor, biblioteca, etc.)
+1. **Crear Usuarios**: Accede a la sección "Usuarios" para registrar clientes
+2. **Crear Servicios**: En "Servicios" puedes agregar los servicios disponibles (comedor, atencion, etc.)
 3. **Solicitar Turno**: Los usuarios pueden solicitar turnos seleccionando un servicio
 4. **Panel Admin**: Los administradores pueden ver y avanzar los turnos en tiempo real
 5. **Visualización**: La página de inicio muestra el turno actual en pantalla grande
