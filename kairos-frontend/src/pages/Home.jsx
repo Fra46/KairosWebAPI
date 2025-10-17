@@ -9,8 +9,6 @@ function Home() {
 
   useEffect(() => {
     cargarTurnoActual();
-    const interval = setInterval(cargarTurnoActual, 5000);
-    return () => clearInterval(interval);
   }, []);
 
   const cargarTurnoActual = async () => {
