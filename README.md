@@ -184,8 +184,6 @@ Este proyecto está bajo la Licencia [MIT](https://opensource.org/licenses/MIT).
 
 ## Autor
 
-**Tu Nombre**
-
 - GitHub: [@Fra46](https://github.com/Fra46)
 
 ## Agradecimientos
