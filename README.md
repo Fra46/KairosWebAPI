@@ -2,6 +2,8 @@
 
 Sistema web para la gestión eficiente de turnos de diversos servicios, desarrollado con React 18 + Vite en el frontend y ASP.NET Core Web API en el backend.
 
+![Logo de Kairos](https://github.com/Fra46/KairosWebAPI/blob/master/Kairos.jpg)
+
 ## 🚀 Características
 
 - **Gestión de Turnos**: Solicitud, visualización y administración de turnos en tiempo real
