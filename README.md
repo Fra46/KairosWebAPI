@@ -184,9 +184,19 @@ kairos-frontend/
 
 Este proyecto está bajo la Licencia [MIT](https://opensource.org/licenses/MIT).
 
-## Autor
+## Autores
 
+Andres Zapata
 - GitHub: [@Fra46](https://github.com/Fra46)
+
+Maira Torres
+- GitHub: [@Fra46](https://github.com/22MAT11)
+
+Daniel Castro
+- GitHub: [@Fra46](https://github.com/Raizonkill)
+
+Ruben Guitierrez
+- GitHub: [@Fra46](https://github.com/ErisGC)
 
 ## Agradecimientos
 
