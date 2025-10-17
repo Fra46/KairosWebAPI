@@ -1,4 +1,4 @@
-# Kairos - Sistema de Turnos Universitario
+# Kairos - Sistema de Turnos
 
 Sistema web para la gestión eficiente de turnos en servicios universitarios, desarrollado con React 18 + Vite en el frontend y ASP.NET Core Web API en el backend.
 
