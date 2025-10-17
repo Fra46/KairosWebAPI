@@ -10,8 +10,7 @@ function Usuarios() {
   const [nuevoUsuario, setNuevoUsuario] = useState({
     nombre: '',
     tipo: 'Estudiante',
-    email: '',
-    telefono: ''
+    documento: ''
   });
 
   useEffect(() => {
@@ -130,24 +129,15 @@ function Usuarios() {
                     <option value="Visitante">Visitante</option>
                   </select>
                 </div>
-                <div className="col-md-6">
-                  <label className="form-label">Email</label>
+                <div className="col-md-12">
+                  <label className="form-label">Documento (CC, TI, etc.) *</label>
                   <input
-                    type="email"
+                    type="text"
                     className="form-control"
-                    value={nuevoUsuario.email}
-                    onChange={(e) => setNuevoUsuario({ ...nuevoUsuario, email: e.target.value })}
-                    placeholder="usuario@universidad.edu"
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label className="form-label">Teléfono</label>
-                  <input
-                    type="tel"
-                    className="form-control"
-                    value={nuevoUsuario.telefono}
-                    onChange={(e) => setNuevoUsuario({ ...nuevoUsuario, telefono: e.target.value })}
-                    placeholder="Ej: +57 300 123 4567"
+                    value={nuevoUsuario.documento}
+                    onChange={(e) => setNuevoUsuario({ ...nuevoUsuario, documento: e.target.value })}
+                    placeholder="Ej: 1234567890"
+                    required
                   />
                 </div>
               </div>
@@ -177,8 +167,7 @@ function Usuarios() {
                   <th className="px-4 py-3">ID</th>
                   <th className="py-3">Nombre</th>
                   <th className="py-3">Tipo</th>
-                  <th className="py-3">Email</th>
-                  <th className="py-3">Teléfono</th>
+                  <th className="py-3">Documento</th>
                   <th className="py-3 text-end pe-4">Acciones</th>
                 </tr>
               </thead>
@@ -206,8 +195,7 @@ function Usuarios() {
                           {usuario.tipo}
                         </span>
                       </td>
-                      <td className="py-3 text-muted">{usuario.email || '-'}</td>
-                      <td className="py-3 text-muted">{usuario.telefono || '-'}</td>
+                      <td className="py-3 text-muted">{usuario.documento || '-'}</td>
                       <td className="py-3 text-end pe-4">
                         <button 
                           className="btn btn-sm btn-outline-danger"
