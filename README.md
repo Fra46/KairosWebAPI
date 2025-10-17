@@ -198,40 +198,8 @@ Este proyecto está bajo la Licencia MIT.
 
 **Tu Nombre**
 
-- GitHub: [@tu-usuario](https://github.com/Fra46)
-
+- GitHub: [@Fra46](https://github.com/Fra46)
 
 ## Agradecimientos
 
-- Universidad [Nombre] por el apoyo al proyecto
 - Comunidad de React y ASP.NET Core
-
-
-```plaintext
-
----
-
-## 📝 Descripción corta para GitHub
-
-Usa esta descripción en la configuración de tu repositorio:
-
-```
-
-Sistema web de gestión de turnos universitarios con React 18 + Vite y ASP.NET Core Web API. Incluye administración de usuarios, servicios y turnos en tiempo real con interfaz moderna y responsive.
-
-```plaintext
-
----
-
-## 🏷️ Topics sugeridos para GitHub
-
-Agrega estos topics a tu repositorio para mejor visibilidad:
-
-```
-
-react, vite, aspnet-core, webapi, bootstrap, turnos, queue-management, university, entity-framework, axios, react-router
-
-```plaintext
-
-Ahora tu repositorio tendrá una documentación completa y profesional que facilitará que otros desarrolladores entiendan y contribuyan al proyecto.
-```
