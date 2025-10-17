@@ -190,13 +190,13 @@ Andres Zapata
 - GitHub: [@Fra46](https://github.com/Fra46)
 
 Maira Torres
-- GitHub: [@Fra46](https://github.com/22MAT11)
+- GitHub: [@22MAT11](https://github.com/22MAT11)
 
 Daniel Castro
-- GitHub: [@Fra46](https://github.com/Raizonkill)
+- GitHub: [@Raizonkill](https://github.com/Raizonkill)
 
 Ruben Guitierrez
-- GitHub: [@Fra46](https://github.com/ErisGC)
+- GitHub: [@ErisGC](https://github.com/ErisGC)
 
 ## Agradecimientos
 
