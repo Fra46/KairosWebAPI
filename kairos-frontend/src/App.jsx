@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import SolicitarTurno from './pages/SolicitarTurno';
 import PanelAdmin from './pages/PanelAdmin';
 import Servicios from './pages/Servicios';
-import Usuarios from './pages/Usuarios'; // <CHANGE> Importar nueva página
+import Usuarios from './pages/Usuarios';
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
             <Route path="/solicitar" element={<SolicitarTurno />} />
             <Route path="/admin" element={<PanelAdmin />} />
             <Route path="/servicios" element={<Servicios />} />
-            <Route path="/usuarios" element={<Usuarios />} /> {/* <CHANGE> Nueva ruta */}
+            <Route path="/usuarios" element={<Usuarios />} />
           </Routes>
         </div>
       </main>
