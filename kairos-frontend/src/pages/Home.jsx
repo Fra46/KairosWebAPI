@@ -1,25 +1,24 @@
 import { useState, useEffect } from 'react';
 import { turnoService } from '../services/turnoService';
-import TurnoCard from '../components/TurnoCard';
 
 function Home() {
-  const [turnoActual, setTurnoActual] = useState(null);
+  const [turnosPorServicio, setTurnosPorServicio] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    cargarTurnoActual();
+    cargarTurnosActuales();
   }, []);
 
-  const cargarTurnoActual = async () => {
+  const cargarTurnosActuales = async () => {
     try {
       setLoading(true);
-      const turno = await turnoService.obtenerActual();
-      setTurnoActual(turno);
+      const turnos = await turnoService.obtenerActualesPorServicio();
+      setTurnosPorServicio(turnos);
       setError(null);
     } catch (err) {
-      setError('No hay turnos pendientes');
-      setTurnoActual(null);
+      setError('Error al cargar los turnos');
+      console.error(err);
     } finally {
       setLoading(false);
     }
@@ -36,32 +35,46 @@ function Home() {
   }
 
   return (
-    <div className="row justify-content-center">
-      <div className="col-lg-8">
-        <div className="text-center mb-5">
-          <h1 className="display-4 fw-bold mb-3">Sistema de Turnos Universitario</h1>
-          <p className="lead text-muted">Gestión eficiente de turnos para servicios universitarios</p>
-        </div>
-
-        <div className="card border-0 shadow-lg mb-4" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
-          <div className="card-body text-center py-5">
-            <h2 className="text-white mb-3">Turno Actual</h2>
-            {error ? (
-              <p className="text-white-50 mb-0">{error}</p>
-            ) : turnoActual ? (
-              <div className="display-1 fw-bold text-white">#{turnoActual.numeroTurno}</div>
-            ) : null}
-          </div>
-        </div>
-
-        {turnoActual && (
-          <div className="card border-0 shadow">
-            <div className="card-body p-4">
-              <TurnoCard turno={turnoActual} />
-            </div>
-          </div>
-        )}
+    <div>
+      <div className="text-center mb-5">
+        <h1 className="display-4 fw-bold mb-3">Sistema de Turnos Universitario</h1>
+        <p className="lead text-muted">Gestión eficiente de turnos para servicios universitarios</p>
+        <button 
+          className="btn btn-outline-primary mt-3"
+          onClick={cargarTurnosActuales}
+        >
+          Actualizar Turnos
+        </button>
       </div>
+
+      {error && (
+        <div className="alert alert-danger" role="alert">
+          {error}
+        </div>
+      )}
+
+      {turnosPorServicio.length === 0 ? (
+        <div className="alert alert-info text-center">
+          No hay turnos activos en este momento
+        </div>
+      ) : (
+        <div className="row g-4">
+          {turnosPorServicio.map((turno) => (
+            <div key={turno.id} className="col-md-6 col-lg-4">
+              <div className="card border-0 shadow-lg h-100" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
+                <div className="card-body text-center py-5">
+                  <h3 className="text-white mb-3">{turno.servicioNombre}</h3>
+                  <div className="display-1 fw-bold text-white mb-3">#{turno.numeroTurno}</div>
+                  <div className="bg-white bg-opacity-25 rounded p-3 text-white">
+                    <p className="mb-1"><strong>{turno.usuarioNombre}</strong></p>
+                    <p className="mb-0 small">{turno.usuarioTipo}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

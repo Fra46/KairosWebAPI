@@ -120,5 +120,93 @@ namespace KairosWebAPI.Services
                 ServicioNombre = turno.Servicio.Nombre
             };
         }
+
+        public async Task<List<TurnoDTO>> ObtenerTurnosActualesPorServicioAsync()
+        {
+            var servicios = await _context.Servicios.ToListAsync();
+            var turnosActuales = new List<TurnoDTO>();
+
+            foreach (var servicio in servicios)
+            {
+                var turno = await _context.Turnos
+                    .Include(t => t.Usuario)
+                    .Include(t => t.Servicio)
+                    .Where(t => !t.Atendido && t.ServicioId == servicio.Id)
+                    .OrderBy(t => t.NumeroTurno)
+                    .FirstOrDefaultAsync();
+
+                if (turno != null)
+                {
+                    turnosActuales.Add(new TurnoDTO
+                    {
+                        Id = turno.Id,
+                        NumeroTurno = turno.NumeroTurno,
+                        FechaSolicitud = turno.FechaSolicitud,
+                        Atendido = turno.Atendido,
+                        UsuarioNombre = turno.Usuario.Nombre,
+                        UsuarioTipo = turno.Usuario.Tipo,
+                        ServicioNombre = turno.Servicio.Nombre
+                    });
+                }
+            }
+
+            return turnosActuales;
+        }
+
+        public async Task<TurnoDTO?> AvanzarTurnoPorServicioAsync(int servicioId)
+        {
+            var turno = await _context.Turnos
+                .Include(t => t.Usuario)
+                .Include(t => t.Servicio)
+                .Where(t => !t.Atendido && t.ServicioId == servicioId)
+                .OrderBy(t => t.NumeroTurno)
+                .FirstOrDefaultAsync();
+
+            if (turno == null) return null;
+
+            turno.Atendido = true;
+            await _context.SaveChangesAsync();
+
+            var siguiente = await _context.Turnos
+                .Include(t => t.Usuario)
+                .Include(t => t.Servicio)
+                .Where(t => !t.Atendido && t.ServicioId == servicioId)
+                .OrderBy(t => t.NumeroTurno)
+                .FirstOrDefaultAsync();
+
+            if (siguiente == null) return null;
+
+            return new TurnoDTO
+            {
+                Id = siguiente.Id,
+                NumeroTurno = siguiente.NumeroTurno,
+                FechaSolicitud = siguiente.FechaSolicitud,
+                Atendido = false,
+                UsuarioNombre = siguiente.Usuario.Nombre,
+                UsuarioTipo = siguiente.Usuario.Tipo,
+                ServicioNombre = siguiente.Servicio.Nombre
+            };
+        }
+
+        public async Task<List<TurnoDTO>> ObtenerPendientesPorServicioAsync(int servicioId)
+        {
+            var turnos = await _context.Turnos
+                .Include(t => t.Usuario)
+                .Include(t => t.Servicio)
+                .Where(t => !t.Atendido && t.ServicioId == servicioId)
+                .OrderBy(t => t.NumeroTurno)
+                .ToListAsync();
+
+            return turnos.Select(t => new TurnoDTO
+            {
+                Id = t.Id,
+                NumeroTurno = t.NumeroTurno,
+                FechaSolicitud = t.FechaSolicitud,
+                Atendido = t.Atendido,
+                UsuarioNombre = t.Usuario.Nombre,
+                UsuarioTipo = t.Usuario.Tipo,
+                ServicioNombre = t.Servicio.Nombre
+            }).ToList();
+        }
     }
 }

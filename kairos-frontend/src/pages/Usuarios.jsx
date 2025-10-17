@@ -9,7 +9,7 @@ function Usuarios() {
   const [mostrarForm, setMostrarForm] = useState(false);
   const [nuevoUsuario, setNuevoUsuario] = useState({
     nombre: '',
-    tipo: 'Estudiante',
+    tipo: '',
     documento: ''
   });
 
@@ -47,7 +47,7 @@ function Usuarios() {
   };
 
   const handleEliminar = async (id) => {
-    if (window.confirm('¿Estás seguro de eliminar este usuario?')) {
+    if (window.confirm('¿Estas seguro de eliminar este usuario?')) {
       try {
         await usuarioService.eliminar(id);
         setMensaje({ tipo: 'success', texto: 'Usuario eliminado exitosamente' });
@@ -74,7 +74,7 @@ function Usuarios() {
     <div>
       <div className="d-flex justify-content-between align-items-center mb-4">
         <div>
-          <h2 className="mb-1">Gestión de Usuarios</h2>
+          <h2 className="mb-1">Gestion de Usuarios</h2>
           <p className="text-muted mb-0">Administra los usuarios del sistema</p>
         </div>
         <button 
@@ -126,11 +126,11 @@ function Usuarios() {
                     <option value="Estudiante">Estudiante</option>
                     <option value="Docente">Docente</option>
                     <option value="Administrativo">Administrativo</option>
-                    <option value="Visitante">Visitante</option>
+                    <option value="Practicante">Practicante</option>
                   </select>
                 </div>
                 <div className="col-md-12">
-                  <label className="form-label">Documento (CC, TI, etc.) *</label>
+                  <label className="form-label">N° Documento *</label>
                   <input
                     type="text"
                     className="form-control"
@@ -167,7 +167,7 @@ function Usuarios() {
                   <th className="px-4 py-3">ID</th>
                   <th className="py-3">Nombre</th>
                   <th className="py-3">Tipo</th>
-                  <th className="py-3">Documento</th>
+                  <th className="py-3">N° Documento</th>
                   <th className="py-3 text-end pe-4">Acciones</th>
                 </tr>
               </thead>
@@ -190,7 +190,8 @@ function Usuarios() {
                           usuario.tipo === 'Estudiante' ? 'bg-primary' :
                           usuario.tipo === 'Docente' ? 'bg-success' :
                           usuario.tipo === 'Administrativo' ? 'bg-info' :
-                          'bg-warning'
+                          usuario.tipo === 'Practicante' ? 'bg-warning':
+                          'bg-danger'
                         }`}>
                           {usuario.tipo}
                         </span>
