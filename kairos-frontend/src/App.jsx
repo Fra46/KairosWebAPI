@@ -1,8 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Home from './pages/Home';
-import SolicitarTurno from './pages/SolicitarTurno';
-import PanelAdmin from './pages/PanelAdmin';
+import VistaUsuario from './pages/VistaUsuario';
+import VistaPantalla from './pages/VistaPantalla';
+import VistaEmpleado from './pages/VistaEmpleado';
+import VistaAdmin from './pages/VistaAdmin';
 import Servicios from './pages/Servicios';
 import Usuarios from './pages/Usuarios';
 
@@ -11,11 +12,12 @@ function App() {
     <div className="App">
       <Navbar />
       <main className="flex-grow-1">
-        <div className="container py-4">
+        <div className="container-fluid py-4">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/solicitar" element={<SolicitarTurno />} />
-            <Route path="/admin" element={<PanelAdmin />} />
+            <Route path="/solicitar" element={<VistaUsuario />} />
+            <Route path="/pantalla" element={<VistaPantalla />} />
+            <Route path="/empleado" element={<VistaEmpleado />} />
+            <Route path="/admin" element={<VistaAdmin />} />
             <Route path="/servicios" element={<Servicios />} />
             <Route path="/usuarios" element={<Usuarios />} />
           </Routes>

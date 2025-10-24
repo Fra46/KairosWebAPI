@@ -12,12 +12,14 @@ export const usuarioService = {
   },
 
   crear: async (usuario) => {
-    const response = await api.post('/Usuarios', usuario);
+    const { nombre, tipo, documento } = usuario;
+    const response = await api.post('/Usuarios', { nombre, tipo, documento });
     return response.data;
   },
 
   actualizar: async (id, usuario) => {
-    const response = await api.put(`/Usuarios/${id}`, usuario);
+    const { nombre, tipo, documento } = usuario;
+    const response = await api.put(`/Usuarios/${id}`, { nombre, tipo, documento });
     return response.data;
   },
 

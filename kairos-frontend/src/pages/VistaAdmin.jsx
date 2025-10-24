@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { turnoService } from '../services/turnoService';
 import { servicioService } from '../services/servicioService';
 
-function PanelAdmin() {
+function VistaAdmin() {
   const [servicios, setServicios] = useState([]);
   const [turnosPorServicio, setTurnosPorServicio] = useState({});
   const [pendientesPorServicio, setPendientesPorServicio] = useState({});
@@ -23,14 +23,12 @@ function PanelAdmin() {
       
       setServicios(servs);
       
-      // Organizar turnos por servicio
       const turnosPorServ = {};
       turnosActuales.forEach(turno => {
         turnosPorServ[turno.servicioNombre] = turno;
       });
       setTurnosPorServicio(turnosPorServ);
 
-      // Cargar pendientes para cada servicio
       const pendientes = {};
       for (const servicio of servs) {
         const pend = await turnoService.obtenerPendientesPorServicio(servicio.id);
@@ -63,7 +61,7 @@ function PanelAdmin() {
       <div className="d-flex justify-content-between align-items-center mb-4">
         <div>
           <h2 className="mb-1">Panel de Administración</h2>
-          <p className="text-muted mb-0">Gestiona los turnos por servicio</p>
+          <p className="text-muted mb-0">Gestiona todos los servicios y turnos</p>
         </div>
         <button 
           className="btn btn-outline-primary"
@@ -137,4 +135,4 @@ function PanelAdmin() {
   );
 }
 
-export default PanelAdmin;
+export default VistaAdmin;
