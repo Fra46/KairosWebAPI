@@ -18,8 +18,8 @@ function App() {
             <Route path="/pantalla" element={<VistaPantalla />} />
             <Route path="/empleado" element={<VistaEmpleado />} />
             <Route path="/admin" element={<VistaAdmin />} />
-            <Route path="/servicios" element={<Servicios />} />
-            <Route path="/usuarios" element={<Usuarios />} />
+            <Route path="/admin/servicios" element={<Servicios />} />
+            <Route path="/admin/usuarios" element={<Usuarios />} />
           </Routes>
         </div>
       </main>

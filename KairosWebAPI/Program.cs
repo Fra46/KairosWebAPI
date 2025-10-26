@@ -21,7 +21,7 @@ builder.Services.AddCors(options =>
     {
         policy.WithOrigins(
             "http://localhost:3000",
-            "http://192.168.31.201:3000" // IP del frontend accesible
+            "http://192.168.1.41:3000" // IP del frontend accesible
         )
         .AllowAnyHeader()
         .AllowAnyMethod()

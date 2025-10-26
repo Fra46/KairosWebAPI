@@ -26,8 +26,8 @@ export const turnoService = {
     return response.data;
   },
 
-  obtenerActualesPorServicio: async (servicioId) => {
-    const response = await api.get(`/Turnos/actuales/${servicioId}`);
+   obtenerActualesPorServicio: async () => {
+    const response = await api.get('/Turnos/actuales-por-servicio');
     return response.data;
   },
 

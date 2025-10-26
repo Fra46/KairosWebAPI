@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function Navbar() {
   return (
@@ -27,13 +28,13 @@ function Navbar() {
               <Link className="nav-link" to="/empleado">Empleado</Link>
             </li>
             <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              <button className="nav-link dropdown-toggle btn btn-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Administración
-              </a>
-              <ul className="dropdown-menu">
+              </button>
+            <ul className="dropdown-menu dropdown-menu-end">
                 <li><Link className="dropdown-item" to="/admin">Panel Admin</Link></li>
-                <li><Link className="dropdown-item" to="/servicios">Servicios</Link></li>
-                <li><Link className="dropdown-item" to="/usuarios">Buscar Usuarios</Link></li>
+                <li><Link className="dropdown-item" to="/admin/servicios">Servicios</Link></li>
+                <li><Link className="dropdown-item" to="/admin/usuarios">Buscar Usuarios</Link></li>
               </ul>
             </li>
           </ul>
