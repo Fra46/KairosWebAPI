@@ -1,16 +1,16 @@
 # Kairos - Sistema de Turnos
 
-Sistema web para la gestión eficiente de turnos de diversos servicios, desarrollado con React 18 + Vite en el frontend y ASP.NET Core Web API en el backend.
+Kairos es un sistema web adaptable para la gestión eficiente de turnos en cualquier tipo de institución o empresa que preste servicios al público. Puede ser usado en IPS, hospitales, clínicas, universidades, oficinas públicas, centros de atención al cliente, comercios y mucho más. Brinda una administración centralizada y una experiencia simple y moderna, facilitando la solicitud, visualización y avance de turnos en tiempo real.
 
 ![Logo de Kairos](https://github.com/Fra46/KairosWebAPI/blob/master/Kairos.jpg)
 
 ## 🚀 Características
 
-- **Gestión de Turnos**: Solicitud, visualización y administración de turnos en tiempo real
-- **Gestión de Usuarios**: Registro y administración de clientes
-- **Gestión de Servicios**: CRUD completo de servicios (universitario, atencion al cliente, etc.)
-- **Panel de Administración**: Control centralizado para avanzar turnos y monitorear el sistema
-- **Interfaz Moderna**: Diseño responsive con Bootstrap 5
+- **Gestión de Turnos**: Solicitud, visualización y administración de turnos en tiempo real para cualquier tipo de servicio o área institucional, no solo en el ámbito educativo.
+- **Gestión de Usuarios**: Registro y administración de clientes/usuarios.
+- **Gestión de Servicios**: CRUD completo de servicios de cualquier sector (salud, universitario, atención ciudadana, etc.).
+- **Panel de Administración**: Control centralizado para avanzar turnos y monitorear el sistema de manera ágil y eficiente.
+- **Interfaz Moderna**: Diseño responsivo (Bootstrap 5) y adaptable para IPS, entidades públicas y privadas, comercios, universidades y más.
 
 ## 🛠️ Tecnologías
 
