@@ -46,34 +46,6 @@ namespace KairosWebAPI.Controllers
             return turno;
         }
 
-        // GET: api/Turnos/pendientes
-        [HttpGet("pendientes")]
-        public async Task<ActionResult<IEnumerable<TurnoDTO>>> GetTurnosPendientes()
-        {
-            var pendientes = await _turnoService.ObtenerPendientesAsync();
-            return Ok(pendientes);
-        }
-
-        // GET: api/Turnos/actual
-        [HttpGet("actual")]
-        public async Task<ActionResult<TurnoDTO>> GetTurnoActual()
-        {
-            var turno = await _turnoService.ObtenerTurnoActualAsync();
-            if (turno == null)
-                return NotFound("No hay turnos pendientes.");
-            return Ok(turno);
-        }
-
-        // POST: api/Turnos/siguiente
-        [HttpPost("siguiente")]
-        public async Task<ActionResult<TurnoDTO>> GetSiguienteTurno()
-        {
-            var turno = await _turnoService.AvanzarTurnoAsync();
-            if (turno == null)
-                return NotFound("No hay turnos pendientes.");
-            return Ok(turno);
-        }
-
         // GET: api/Turnos/actuales-por-servicio
         [HttpGet("actuales-por-servicio")]
         public async Task<ActionResult<IEnumerable<TurnoDTO>>> GetTurnosActualesPorServicio()
