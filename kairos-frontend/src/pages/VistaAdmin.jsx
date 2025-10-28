@@ -9,6 +9,9 @@ function VistaAdmin() {
   const [loading, setLoading] = useState(false);
   const [servicioSeleccionado, setServicioSeleccionado] = useState(null);
 
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
+  const [nuevoServicio, setNuevoServicio] = useState({ nombre: "", descripcion: "" });
+  const [editando, setEditando] = useState(null);
   useEffect(() => {
     cargarDatos();
   }, []);
@@ -56,6 +59,49 @@ function VistaAdmin() {
     setServicioSeleccionado(servicioSeleccionado === servicioId ? null : servicioId);
   };
 
+  const guardarServicio = async (e) => {
+    e.preventDefault();
+    try {
+      const url = editando
+        ? `https://localhost:7149/api/Servicio/${editando.id}`
+        : `https://localhost:7149/api/Servicio`;
+      const metodo = editando ? "PUT" : "POST";
+
+      const response = await fetch(url, {
+        method: metodo,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(nuevoServicio),
+      });
+
+      if (response.ok) {
+        alert(editando ? "Servicio actualizado" : "Servicio creado correctamente");
+        setMostrarFormulario(false);
+        setEditando(null);
+        setNuevoServicio({ nombre: "", descripcion: "" });
+        cargarDatos();
+      } else {
+        alert("Error al guardar el servicio");
+      }
+    } catch (error) {
+      console.error("Error guardando servicio:", error);
+    }
+  };
+
+  const editarServicio = (servicio) => {
+    setNuevoServicio({ nombre: servicio.nombre, descripcion: servicio.descripcion });
+    setEditando(servicio);
+    setMostrarFormulario(true);
+  };
+
+  const eliminarServicio = async (servicioId) => {
+    if (!window.confirm("¿Deseas eliminar este servicio? Esta acción no se puede deshacer.")) return;
+    try {
+      await fetch(`https://localhost:7149/api/Servicio/${servicioId}`, { method: "DELETE" });
+      cargarDatos();
+    } catch (error) {
+      console.error("Error eliminando servicio:", error);
+    }
+  };
   return (
     <div>
       <div className="d-flex justify-content-between align-items-center mb-4">
@@ -131,8 +177,93 @@ function VistaAdmin() {
           );
         })}
       </div>
+      <hr className="my-5" />
+      <div className="d-flex justify-content-between align-items-center mb-3">
+        <h4>Gestión de Servicios</h4>
+        <button
+          className="btn btn-outline-success"
+          onClick={() => {
+            setMostrarFormulario(!mostrarFormulario);
+            setEditando(null);
+            setNuevoServicio({ nombre: "", descripcion: "" });
+          }}
+        >
+          {mostrarFormulario ? "Cerrar" : "➕ Nuevo Servicio"}
+        </button>
+      </div>
+
+      {mostrarFormulario && (
+        <form onSubmit={guardarServicio} className="card p-3 shadow-sm mb-4">
+          <div className="mb-3">
+            <label className="form-label">Nombre del servicio</label>
+            <input
+              type="text"
+              className="form-control"
+              value={nuevoServicio.nombre}
+              onChange={(e) =>
+                setNuevoServicio({ ...nuevoServicio, nombre: e.target.value })
+              }
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Descripción</label>
+            <textarea
+              className="form-control"
+              rows="2"
+              value={nuevoServicio.descripcion}
+              onChange={(e) =>
+                setNuevoServicio({ ...nuevoServicio, descripcion: e.target.value })
+              }
+            ></textarea>
+          </div>
+          <div className="text-end">
+            <button type="submit" className="btn btn-primary">
+              {editando ? "Actualizar" : "Guardar"}
+            </button>
+          </div>
+        </form>
+      )}
+
+      <div className="table-responsive">
+        <table className="table table-striped align-middle">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {servicios.map((s) => (
+              <tr key={s.id}>
+                <td>{s.id}</td>
+                <td>{s.nombre}</td>
+                <td>{s.descripcion}</td>
+                <td>
+                  <button
+                    className="btn btn-sm btn-outline-primary me-2"
+                    onClick={() => editarServicio(s)}
+                  >
+                    ✏️ Editar
+                  </button>
+                  <button
+                    className="btn btn-sm btn-outline-danger"
+                    onClick={() => eliminarServicio(s.id)}
+                  >
+                    🗑️ Eliminar
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
+  
+
 }
 
 export default VistaAdmin;

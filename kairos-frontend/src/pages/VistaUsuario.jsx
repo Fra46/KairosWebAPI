@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { turnoService } from '../services/turnoService';
 import { servicioService } from '../services/servicioService';
-import { usuarioService } from '../services/usuarioService';
+import usuarioService from '../services/usuarioService';
 
 function VistaUsuario() {
   const [servicios, setServicios] = useState([]);

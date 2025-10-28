@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { usuarioService } from '../services/usuarioService';
+import usuarioService from '../services/usuarioService';
 
 function Registro() {
   const location = useLocation();

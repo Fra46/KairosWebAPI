@@ -85,21 +85,26 @@ namespace KairosWebAPI.Controllers
         }
 
         // DELETE: api/Usuarios/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUsuario(int id)
+        [HttpGet("buscar")]
+        public async Task<ActionResult<IEnumerable<object>>> BuscarUsuarios([FromQuery] string query)
         {
-            var usuario = await _context.Usuarios.FindAsync(id);
-            if (usuario == null)
-            {
-                return NotFound();
-            }
+            if (string.IsNullOrWhiteSpace(query))
+                return BadRequest("Debe proporcionar un término de búsqueda.");
 
-            _context.Usuarios.Remove(usuario);
-            await _context.SaveChangesAsync();
+            var resultados = await _context.Usuarios
+                .Where(u => u.Nombre.Contains(query) || u.Documento.Contains(query))
+                .Select(u => new
+                {
+                    u.Id,
+                    u.Nombre,
+                    u.Tipo,
+                    u.Documento
+                })
+                .Take(10) // limita resultados para evitar sobrecargar la red
+                .ToListAsync();
 
-            return NoContent();
+            return Ok(resultados);
         }
-
         private bool UsuarioExists(int id)
         {
             return _context.Usuarios.Any(e => e.Id == id);

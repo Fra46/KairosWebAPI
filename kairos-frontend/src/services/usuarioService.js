@@ -1,6 +1,6 @@
 import api from './api';
 
-export const usuarioService = {
+const usuarioService = {
   obtenerTodos: async () => {
     const response = await api.get('/Usuarios');
     return response.data;
@@ -28,3 +28,5 @@ export const usuarioService = {
     return response.data;
   }
 };
+
+export default usuarioService;
