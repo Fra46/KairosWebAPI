@@ -40,7 +40,7 @@ namespace KairosWebAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Servicios");
+                    b.ToTable("Servicios", (string)null);
                 });
 
             modelBuilder.Entity("KairosWebAPI.Models.Turno", b =>
@@ -72,7 +72,7 @@ namespace KairosWebAPI.Migrations
 
                     b.HasIndex("UsuarioId");
 
-                    b.ToTable("Turnos");
+                    b.ToTable("Turnos", (string)null);
                 });
 
             modelBuilder.Entity("KairosWebAPI.Models.Usuario", b =>
@@ -100,7 +100,7 @@ namespace KairosWebAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Usuarios");
+                    b.ToTable("Usuarios", (string)null);
                 });
 
             modelBuilder.Entity("KairosWebAPI.Models.Turno", b =>
